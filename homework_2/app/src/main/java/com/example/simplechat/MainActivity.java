@@ -11,6 +11,9 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,7 +32,26 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
-    }
+        Button btn_login = findViewById(R.id.btn_login);
+
+
+        btn_login.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View view) {
+                {
+                    EditText et_User = findViewById(R.id.editText_user);
+                    EditText et_Password = findViewById(R.id.editText_password);
+                    String strUser = et_User.getText().toString();
+                    String strPassword = et_Password.getText().toString();
+                    if (strUser.equals("abc") && strPassword.equals("123")) {
+                        Toast.makeText(MainActivity.this, "登录成功！", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(MainActivity.this, "用户名或密码错误！", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                ;
+            }
+        });}
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

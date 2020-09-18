@@ -1,5 +1,6 @@
 package com.example.simplechat;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -45,11 +46,12 @@ public class MainActivity extends AppCompatActivity {
                     String strPassword = et_Password.getText().toString();
                     if (strUser.equals("abc") && strPassword.equals("123")) {
                         Toast.makeText(MainActivity.this, "登录成功！", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(MainActivity.this, ChatActivity.class);
+                        startActivity(intent);
                     } else {
-                        Toast.makeText(MainActivity.this, "用户名或密码错误！", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "登陆失败！", Toast.LENGTH_SHORT).show();
                     }
                 }
-                ;
             }
         });}
 

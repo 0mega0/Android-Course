@@ -1,4 +1,4 @@
-package com.example.homework_5;
+package com.example.store_read;
 
 import android.content.Context;
 
@@ -22,6 +22,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
-        assertEquals("com.example.homework_5", appContext.getPackageName());
+        assertEquals("com.example.store_read", appContext.getPackageName());
     }
 }

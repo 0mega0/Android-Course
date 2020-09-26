@@ -1,4 +1,4 @@
-package com.example.homework_5;
+package com.example.store_read;
 
 import org.junit.Test;
 

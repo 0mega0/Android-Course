@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Calculator</string>
+    <string name="help_title">帮助文档</string>
+    <string name="help_text">
+        这是一段帮助文档
+        \n作者:俞昊洋
+    </string>
+    <string name="help_back">返回</string>
+    <string name="length_title">长度换算</string>
+    <string name="length_tv_chooseInput">选择起始单位</string>
+    <string name="length_tv_chooseTarget">选择目标单位</string>
+    <string name="length_tv_mm">毫米</string>
+    <string name="length_tv_cm">厘米</string>
+    <string name="length_tv_m">米  </string>
+    <string name="length_tv_km">千米</string>
+    <string name="length_tv_inch">英寸</string>
+    <string name="length_tv_foot">英尺</string>
+</resources>

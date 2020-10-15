@@ -21,11 +21,5 @@
         <item>十六进制</item>
     </string-array>
 
-    <string-array name="time_spinner">
-        <item>二进制</item>
-        <item>八进制</item>
-        <item>十进制</item>
-        <item>十六进制</item>
-    </string-array>
 
 </resources>

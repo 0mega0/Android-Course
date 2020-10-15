@@ -6,19 +6,19 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
+    TextView tv_main;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        TextView tv_main = findViewById(R.id.tv_main);
+        tv_main = findViewById(R.id.tv_main);
         Button btn_1 = findViewById(R.id.btn_1);
         Button btn_2 = findViewById(R.id.btn_2);
         Button btn_3 = findViewById(R.id.btn_3);
@@ -52,25 +52,127 @@ public class MainActivity extends AppCompatActivity {
         Button btn_base = findViewById(R.id.btn_base);
         Button btn_date = findViewById(R.id.btn_date);
 
-        btn_help.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        btn_0.setOnClickListener(this);
+        btn_1.setOnClickListener(this);
+        btn_2.setOnClickListener(this);
+        btn_3.setOnClickListener(this);
+        btn_4.setOnClickListener(this);
+        btn_5.setOnClickListener(this);
+        btn_6.setOnClickListener(this);
+        btn_7.setOnClickListener(this);
+        btn_8.setOnClickListener(this);
+        btn_9.setOnClickListener(this);
+        btn_dot.setOnClickListener(this);
+        btn_divide.setOnClickListener(this);
+        btn_multiply.setOnClickListener(this);
+        btn_add.setOnClickListener(this);
+        btn_minus.setOnClickListener(this);
+        btn_equals.setOnClickListener(this);
+        btn_del.setOnClickListener(this);
+        btn_negitive.setOnClickListener(this);
+        btn_percent.setOnClickListener(this);
+        btn_bracket_left.setOnClickListener(this);
+        btn_bracket_right.setOnClickListener(this);
+        btn_root.setOnClickListener(this);
+        btn_pow.setOnClickListener(this);
+        btn_clear.setOnClickListener(this);
+        btn_help.setOnClickListener(this);
+
+
+        if(isLand()){
+            btn_sin.setOnClickListener(this);
+            btn_cos.setOnClickListener(this);
+            btn_tan.setOnClickListener(this);
+            btn_length.setOnClickListener(this);
+            btn_volume.setOnClickListener(this);
+            btn_base.setOnClickListener(this);
+            btn_date.setOnClickListener(this);
+        }
+
+    }
+
+    @Override
+    public void onClick(View v){
+        String pastStr = tv_main.getText().toString();
+        if(pastStr.equals("0"))
+            tv_main.setText("");
+        String currentStr = tv_main.getText().toString();
+        switch(v.getId()){
+            //---------------------------Number Buttons-------------------------------------------//
+            case R.id.btn_0:{
+                currentStr+="0";
+                tv_main.setText(currentStr);
+            }break;
+            case R.id.btn_1:{
+                currentStr+="1";
+                tv_main.setText(currentStr);
+            }break;
+            case R.id.btn_2:{
+                currentStr+="2";
+                tv_main.setText(currentStr);
+            }break;
+            case R.id.btn_3:{
+                currentStr+="3";
+                tv_main.setText(currentStr);
+            }break;
+            case R.id.btn_4:{
+                currentStr+="4";
+                tv_main.setText(currentStr);
+            }break;
+            case R.id.btn_5:{
+                currentStr+="5";
+                tv_main.setText(currentStr);
+            }break;
+            case R.id.btn_6:{
+                currentStr+="6";
+                tv_main.setText(currentStr);
+            }break;
+            case R.id.btn_7:{
+                currentStr+="7";
+                tv_main.setText(currentStr);
+            }break;
+            case R.id.btn_8:{
+                currentStr+="8";
+                tv_main.setText(currentStr);
+            }break;
+            case R.id.btn_9:{
+                currentStr+="9";
+                tv_main.setText(currentStr);
+            }break;
+            //---------------------------Character Buttons----------------------------------------//
+            case R.id.btn_9:{
+                currentStr+="9";
+                tv_main.setText(currentStr);
+            }break;
+            //---------------------------Activity Change Buttons----------------------------------//
+            case R.id.btn_help:{
                 Intent intent =new Intent();
                 intent.setClass(MainActivity.this,HelpActivity.class);
                 startActivity(intent);
-            }
-        });
-        if(isLand()){
-            btn_length.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent =new Intent();
-                    intent.setClass(MainActivity.this,LengthActivity.class);
-                    startActivity(intent);
-                }
-            });
+            }break;
+            case R.id.btn_length:{
+                Intent intent =new Intent();
+                intent.setClass(MainActivity.this,LengthActivity.class);
+                startActivity(intent);
+            }break;
+            case R.id.btn_volume:{
+                Intent intent =new Intent();
+                intent.setClass(MainActivity.this,VolumeActivity.class);
+                startActivity(intent);
+            }break;
+            case R.id.btn_base:{
+                Intent intent =new Intent();
+                intent.setClass(MainActivity.this,BaseActivity.class);
+                startActivity(intent);
+            }break;
+            case R.id.btn_date:{
+                Intent intent =new Intent();
+                intent.setClass(MainActivity.this,DateActivity.class);
+                startActivity(intent);
+            }break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + v.getId());
         }
-
     }
 
 
@@ -79,10 +181,10 @@ public class MainActivity extends AppCompatActivity {
     private boolean isLand() {
         Configuration mConfiguration = this.getResources().getConfiguration(); //获取设置的配置信息
         int ori = mConfiguration.orientation; //获取屏幕方向
-        if (ori == mConfiguration.ORIENTATION_LANDSCAPE) {
+        if (ori == Configuration.ORIENTATION_LANDSCAPE) {
             //横屏
             return true;
-        } else if (ori == mConfiguration.ORIENTATION_PORTRAIT) {
+        } else if (ori == Configuration.ORIENTATION_PORTRAIT) {
             //竖屏
             return false;
         }

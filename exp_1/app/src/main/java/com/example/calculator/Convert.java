@@ -19,6 +19,18 @@ public class Convert {
         return end;
     }
 
+    public double volumeConvert(String inputStr){
+        double end = 0;
+        //            厘米    分米    米    千米
+        double[][] rate={
+                {    1,  0.001,  0.000001,  0.},
+                { 0.01,    1,    10, 0.00001},
+                {0.001,  0.1,     1,0.000001},
+                { 1000,10000,100000,       1}};
+        end = Double.parseDouble(inputStr) * rate[typeInput][typeOutput];
+        return end;
+    }
+
     public static int dateCalculate(String dbtime1, String dbtime2){
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         Date date1 = null;

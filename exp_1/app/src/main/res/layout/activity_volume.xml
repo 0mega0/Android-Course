@@ -9,12 +9,12 @@
     android:rowCount="5">
 
     <TextView
-        android:id="@+id/tv_length_title"
+        android:id="@+id/tv_volume_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_columnSpan="4"
         android:gravity="center"
-        android:text="@string/length_title"
+        android:text="@string/volume_title"
         android:textColor="@color/design_default_color_on_secondary"
         android:textSize="35sp" />
 
@@ -27,7 +27,7 @@
         android:orientation="vertical">
 
         <EditText
-            android:id="@+id/length_et_input"
+            android:id="@+id/volume_et_input"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -41,7 +41,7 @@
             tools:ignore="LabelFor" />
 
         <TextView
-            android:id="@+id/length_tv_chooseInput"
+            android:id="@+id/volume_tv_chooseInput"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -50,14 +50,14 @@
             android:textSize="20sp" />
 
         <Spinner
-            android:id="@+id/length_spinner_input"
+            android:id="@+id/volume_spinner_input"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:paddingBottom="40dp" />
 
         <TextView
-            android:id="@+id/length_tv_chooseTarget"
+            android:id="@+id/volume_tv_chooseTarget"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -66,14 +66,14 @@
             android:textSize="20sp" />
 
         <Spinner
-            android:id="@+id/length_spinner_target"
+            android:id="@+id/volume_spinner_target"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:paddingBottom="40dp" />
 
         <TextView
-            android:id="@+id/length_tv_output"
+            android:id="@+id/volume_tv_output"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -83,7 +83,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/length_cal"
+        android:id="@+id/volume_cal"
         android:layout_width="180dp"
         android:layout_height="60dp"
         android:layout_gravity="center"
@@ -92,7 +92,7 @@
         android:textSize="20sp" />
 
     <Button
-        android:id="@+id/length_back"
+        android:id="@+id/volume_back"
         android:layout_width="180dp"
         android:layout_height="60dp"
         android:layout_gravity="center"

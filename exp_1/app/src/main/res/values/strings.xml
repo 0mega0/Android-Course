@@ -5,14 +5,17 @@
         这是一段帮助文档
         \n作者:俞昊洋
     </string>
-    <string name="help_back">返回</string>
+    <string name="all_back">返回</string>
+    <string name="all_cal">换算</string>
     <string name="length_title">长度换算</string>
+    <string name="volume_title">体积换算</string>
+    <string name="base_title">进制换算</string>
+    <string name="date_title">日期换算</string>
     <string name="length_tv_chooseInput">选择起始单位</string>
     <string name="length_tv_chooseTarget">选择目标单位</string>
-    <string name="length_tv_mm">毫米</string>
-    <string name="length_tv_cm">厘米</string>
-    <string name="length_tv_m">米  </string>
-    <string name="length_tv_km">千米</string>
-    <string name="length_tv_inch">英寸</string>
-    <string name="length_tv_foot">英尺</string>
+    <string name="date_start">起始日期</string>
+    <string name="date_end">结束日期</string>
+
+
+
 </resources>

@@ -1,6 +1,7 @@
 package com.example.calculator;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -55,13 +56,36 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent =new Intent();
-                intent.setClass(this,);
+                intent.setClass(MainActivity.this,HelpActivity.class);
+                startActivity(intent);
             }
         });
+        if(isLand()){
+            btn_length.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent =new Intent();
+                    intent.setClass(MainActivity.this,LengthActivity.class);
+                    startActivity(intent);
+                }
+            });
+        }
+
     }
 
 
 
 
-
+    private boolean isLand() {
+        Configuration mConfiguration = this.getResources().getConfiguration(); //获取设置的配置信息
+        int ori = mConfiguration.orientation; //获取屏幕方向
+        if (ori == mConfiguration.ORIENTATION_LANDSCAPE) {
+            //横屏
+            return true;
+        } else if (ori == mConfiguration.ORIENTATION_PORTRAIT) {
+            //竖屏
+            return false;
+        }
+        return false;
+    }
 }

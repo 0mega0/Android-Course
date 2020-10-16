@@ -62,6 +62,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn_7.setOnClickListener(this);
         btn_8.setOnClickListener(this);
         btn_9.setOnClickListener(this);
+
         btn_dot.setOnClickListener(this);
         btn_divide.setOnClickListener(this);
         btn_multiply.setOnClickListener(this);
@@ -140,8 +141,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 tv_main.setText(currentStr);
             }break;
             //---------------------------Character Buttons----------------------------------------//
-            case R.id.btn_9:{
-                currentStr+="9";
+            case R.id.btn_dot:{
+                currentStr+=".";
                 tv_main.setText(currentStr);
             }break;
             //---------------------------Activity Change Buttons----------------------------------//

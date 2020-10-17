@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -36,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button btn_minus = findViewById(R.id.btn_minus);
         Button btn_equals= findViewById(R.id.btn_equals);
         Button btn_del = findViewById(R.id.btn_del);
-        Button btn_negitive = findViewById(R.id.btn_negative);
+        Button btn_negative = findViewById(R.id.btn_negative);
         Button btn_percent= findViewById(R.id.btn_percent);
         Button btn_bracket_left = findViewById(R.id.btn_bracket_left);
         Button btn_bracket_right = findViewById(R.id.btn_bracket_right);
@@ -70,10 +71,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn_minus.setOnClickListener(this);
         btn_equals.setOnClickListener(this);
         btn_del.setOnClickListener(this);
-        btn_negitive.setOnClickListener(this);
+        btn_negative.setOnClickListener(this);
         btn_percent.setOnClickListener(this);
-        btn_bracket_left.setOnClickListener(this);
-        btn_bracket_right.setOnClickListener(this);
         btn_root.setOnClickListener(this);
         btn_pow.setOnClickListener(this);
         btn_clear.setOnClickListener(this);
@@ -81,6 +80,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
         if(isLand()){
+            btn_bracket_left.setOnClickListener(this);
+            btn_bracket_right.setOnClickListener(this);
             btn_sin.setOnClickListener(this);
             btn_cos.setOnClickListener(this);
             btn_tan.setOnClickListener(this);
@@ -94,6 +95,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v){
+
         String pastStr = tv_main.getText().toString();
         if(pastStr.equals("0"))
             tv_main.setText("");
@@ -145,6 +147,73 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 currentStr+=".";
                 tv_main.setText(currentStr);
             }break;
+            case R.id.btn_divide:{
+                currentStr+="/";
+                tv_main.setText(currentStr);
+            }break;
+            case R.id.btn_multiply:{
+                currentStr+="*";
+                tv_main.setText(currentStr);
+            }break;
+            case R.id.btn_add:{
+                currentStr+="+";
+                tv_main.setText(currentStr);
+            }break;
+            case R.id.btn_minus:{
+                currentStr+="-";
+                tv_main.setText(currentStr);
+            }break;
+            case R.id.btn_equals:{
+                String result = Calculate.cal(currentStr)+"\n";
+                tv_main.setText(result);
+            }break;
+            case R.id.btn_del:{
+                if (TextUtils.isEmpty(tv_main.getText())) {
+                    return;
+                }
+                tv_main.setText(currentStr.substring(0, currentStr.length() - 1).length() > 0 ? currentStr.substring(0, currentStr.length() - 1) : "0");
+            }break;
+            case R.id.btn_negative:{
+                currentStr = "-" + currentStr;
+                tv_main.setText(currentStr);
+            }break;
+            case R.id.btn_percent:{
+                currentStr+="%";
+                tv_main.setText(currentStr);
+            }break;
+            case R.id.btn_bracket_left:{
+                currentStr+="(";
+                tv_main.setText(currentStr);
+            }break;
+            case R.id.btn_bracket_right:{
+                currentStr+=")";
+                tv_main.setText(currentStr);
+            }break;
+            case R.id.btn_root:{
+                currentStr+="sqrt(";
+                tv_main.setText(currentStr);
+            }break;
+            case R.id.btn_pow:{
+                currentStr+="^";
+                tv_main.setText(currentStr);
+            }break;
+            case R.id.btn_clear:{
+                currentStr="";
+                tv_main.setText(currentStr);
+            }break;
+            case R.id.btn_sin:{
+                currentStr+="sin(";
+                tv_main.setText(currentStr);
+            }break;
+            case R.id.btn_cos:{
+                currentStr+="cos(";
+                tv_main.setText(currentStr);
+            }break;
+            case R.id.btn_tan:{
+                currentStr+="tan(";
+                tv_main.setText(currentStr);
+            }break;
+
             //---------------------------Activity Change Buttons----------------------------------//
             case R.id.btn_help:{
                 Intent intent =new Intent();

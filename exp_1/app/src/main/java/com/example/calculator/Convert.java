@@ -23,15 +23,37 @@ public class Convert {
         double end = 0;
         //            厘米    分米    米    千米
         double[][] rate={
-                {    1,  0.001,  0.000001,  0.},
-                { 0.01,    1,    10, 0.00001},
-                {0.001,  0.1,     1,0.000001},
-                { 1000,10000,100000,       1}};
+                {                 1,            0.001,   0.000001,  0.000000000000001},
+                {              1000,                1,      0.001,     0.000000000001},
+                {           1000000,             1000,          1,        0.000000001},
+                {1000000000000000.0, 1000000000000.0 ,1000000000 ,                  1}};
         end = Double.parseDouble(inputStr) * rate[typeInput][typeOutput];
         return end;
     }
 
-    public static int dateCalculate(String dbtime1, String dbtime2){
+    public String baseConvert(String inputStr){
+        int first = 2,second = 2;
+        switch(this.getTypeInput()){
+            case 0:first = 2;break;
+            case 1:first = 8;break;
+            case 2:first = 10;break;
+            case 3:first = 16;break;
+        }
+        switch(this.getTypeOutput()){
+            case 0:second = 2;break;
+            case 1:second = 8;break;
+            case 2:second = 10;break;
+            case 3:second = 16;break;
+        }
+        try{
+            int inputDecimal = Integer.parseInt(inputStr,first);
+            return Integer.toString(inputDecimal,second);
+        }catch(NumberFormatException e){
+            return "Input Type Error";
+        }
+    }
+
+    public int dateCalculate(String dbtime1, String dbtime2){
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         Date date1 = null;
         Date date2 = null;

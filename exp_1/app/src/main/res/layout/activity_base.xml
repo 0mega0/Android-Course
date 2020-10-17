@@ -9,7 +9,7 @@
     android:rowCount="5">
 
     <TextView
-        android:id="@+id/tv_length_title"
+        android:id="@+id/tv_base_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_columnSpan="4"

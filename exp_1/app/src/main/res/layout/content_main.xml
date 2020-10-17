@@ -5,15 +5,24 @@
     android:columnCount="4"
     android:rowCount="7">
 
-    <TextView
-        android:id="@+id/tv_main"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_rowWeight="2"
+        android:layout_height="72dp"
+        android:layout_rowSpan="2"
+        android:layout_rowWeight="1"
         android:layout_columnSpan="4"
-        android:gravity="bottom|end"
-        android:text="0"
-        android:textSize="24sp" />
+        android:layout_columnWeight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_main"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_rowWeight="2"
+            android:gravity="bottom|right"
+            android:text="0"
+            android:textSize="24sp" />
+    </LinearLayout>
 
     <Button
         android:id="@+id/btn_help"
@@ -34,7 +43,7 @@
         android:textSize="20sp" />
 
     <Button
-        android:id="@+id/btn_"
+        android:id="@+id/btn_root"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_rowWeight="1"

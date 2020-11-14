@@ -56,16 +56,6 @@ public class GarbageService {
         return garbges;
     }
 
-    public ArrayList<Garbage> classifyGarbage(ArrayList<Garbage> lotsGarbages, Garbage.GarbageType type) {
-        ArrayList<Garbage> result = new ArrayList<>();
-        for (Garbage garbage : lotsGarbages) {
-            if (garbage.getType() == type) {
-                result.add(garbage);
-            }
-        }
-        return result;
-    }
-
     public ArrayList<Garbage> search(ArrayList<Garbage> dataSet, String keywords) {
         ArrayList<Garbage> result = new ArrayList<>();
         char[] chars = keywords.toLowerCase().toCharArray();
@@ -76,10 +66,10 @@ public class GarbageService {
         }
         temp.append("$");
         String pattern = temp.toString();
-        for (Garbage trash : dataSet) {
-            if (Pattern.matches(pattern, trash.getName().toLowerCase()) ||
-                    Pattern.matches(pattern, Util.ChineseToPinYin(trash.getName()).toLowerCase())) {
-                result.add(trash);
+        for (Garbage garbage : dataSet) {
+            if (Pattern.matches(pattern, garbage.getName().toLowerCase()) ||
+                    Pattern.matches(pattern, Util.ChineseToPinYin(garbage.getName()).toLowerCase())) {
+                result.add(garbage);
             }
         }
         return result;

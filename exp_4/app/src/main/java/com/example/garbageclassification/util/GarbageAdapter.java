@@ -113,14 +113,14 @@ public class GarbageAdapter extends BaseAdapter implements Filterable {
 
             ArrayList<Garbage> newValues;
             String filterString = constraint.toString().trim().toLowerCase();
-            Log.d(TAG, "performFiltering: FilterString: " + filterString);
+            //消除了大小写和空格的噪音
             if (TextUtils.isEmpty(filterString)) {
-                Log.d(TAG, "performFiltering: Empty Filter!");
+                //输入为空时，返回原set的副本
                 newValues = copyOfGarbages;
             } else {
                 newValues = service.search(garbages, filterString);
             }
-            Log.d(TAG, "performFiltering: result: " + newValues);
+            //正常运行
             results.values = newValues;
             results.count = newValues.size();
             return results;

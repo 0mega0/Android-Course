@@ -13,7 +13,7 @@ import android.os.IBinder;
 
 import com.example.musicplayer.R;
 import com.example.musicplayer.activity.MainActivity;
-import com.example.musicplayer.model.MyMusic;
+import com.example.musicplayer.model.Music;
 
 import java.io.IOException;
 
@@ -22,7 +22,7 @@ public class MusicService extends Service {
     public static final String SERVICE_ACTION = "com.example.musicplayer.Service";
 
     private int newMusic;
-    private MyMusic myMusic;
+    private Music music;
     private MediaPlayer player = new MediaPlayer();
     private PlayState state = PlayState.play;
     private int curPosition;
@@ -75,13 +75,13 @@ public class MusicService extends Service {
             }
         });
     }
-    public void playMusic(final MyMusic myMusic) {
+    public void playMusic(final Music music) {
         if (player == null) {
             return;
         }
         player.stop();
         player.reset();
-        builder.setContentText(myMusic.getName() + "-正在播放");
+        builder.setContentText(music.getName() + "-正在播放");
         NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         Notification notification = builder.build();
         startForeground(0, notification);
@@ -90,11 +90,11 @@ public class MusicService extends Service {
         }
 
         Intent intent = new Intent(MainActivity.ACTIVITY_ACTION);
-        intent.putExtra("musicName", myMusic.getName());
+        intent.putExtra("musicName", music.getName());
         sendBroadcast(intent);
 
         try {
-            player.setDataSource(myMusic.getPath());
+            player.setDataSource(music.getPath());
             player.prepare();
         } catch (IOException e) {
             e.printStackTrace();
@@ -134,9 +134,9 @@ public class MusicService extends Service {
             System.out.println("receive");
             newMusic = intent.getIntExtra("newMusic", -1);
             if (newMusic != -1) {
-                myMusic = (MyMusic) intent.getSerializableExtra("music");
-                if (myMusic != null) {
-                    playMusic(myMusic);
+                music = (Music) intent.getSerializableExtra("music");
+                if (music != null) {
+                    playMusic(music);
                     state = PlayState.pause;
                 }
             }
@@ -145,8 +145,8 @@ public class MusicService extends Service {
             if (isPlay != -1) {
                 switch (state) {
                     case play:
-                        myMusic = (MyMusic) intent.getSerializableExtra("music");
-                        playMusic(myMusic);
+                        music = (Music) intent.getSerializableExtra("music");
+                        playMusic(music);
                         state = PlayState.pause;
                         break;
                     case pause:

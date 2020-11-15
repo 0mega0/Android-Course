@@ -20,7 +20,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.example.musicplayer.R;
-import com.example.musicplayer.model.MyMusic;
+import com.example.musicplayer.model.Music;
 import com.example.musicplayer.utility.MusicAdapter;
 import com.example.musicplayer.utility.MusicService;
 import com.example.musicplayer.utility.Util;
@@ -33,8 +33,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     public static final int PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 1;
     public static final String ACTIVITY_ACTION = "com.example.musicplayer.activity";
 
-    private List<MyMusic> musics;
-    private MyMusic music;
+    private List<Music> musics;
+    private Music music;
     private int state = MusicService.PlayState.play.value;
     private int index;
     private int flag = 0;
@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         permission = Util.checkPublishPermission(this);
         if (permission) {
-            musics = Util.getMusicDate(context);
+            musics = Util.getMusicData(context);
         }
 
         MusicAdapter musicAdapter = new MusicAdapter(musics, this);

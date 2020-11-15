@@ -12,14 +12,14 @@ import androidx.core.app.ActivityCompat;
 
 
 import com.example.musicplayer.activity.MainActivity;
-import com.example.musicplayer.model.MyMusic;
+import com.example.musicplayer.model.Music;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Util {
-    public static List<MyMusic> getMusicDate(Context context) {
-        List<MyMusic> musics = new ArrayList<>();
+    public static List<Music> getMusicData(Context context) {
+        List<Music> musics = new ArrayList<>();
         ContentResolver resolver = context.getContentResolver();
         Cursor cursor = resolver.query(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI,
                 null, null, null,
@@ -35,8 +35,8 @@ public class Util {
             }
 
             if (time > 20000) {
-                MyMusic myMusic = new MyMusic(name, author, path, time);
-                musics.add(myMusic);
+                Music music = new Music(name, author, path, time);
+                musics.add(music);
             }
         }
         if (cursor != null) {

@@ -2,7 +2,7 @@ package com.example.musicplayer.model;
 
 import java.io.Serializable;
 
-public class MyMusic implements Serializable {
+public class Music implements Serializable {
     private static final long SerialVersionUID = 1L;
 
     private String name;
@@ -10,7 +10,7 @@ public class MyMusic implements Serializable {
     private String path;
     private long duration;
 
-    public MyMusic(String name, String author, String path, long time) {
+    public Music(String name, String author, String path, long time) {
         this.name = name;
         this.author = author;
         this.path = path;

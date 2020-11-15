@@ -10,16 +10,16 @@ import android.widget.TextView;
 
 
 import com.example.musicplayer.R;
-import com.example.musicplayer.model.MyMusic;
+import com.example.musicplayer.model.Music;
 
 import java.text.SimpleDateFormat;
 import java.util.List;
 
 public class MusicAdapter extends BaseAdapter {
-    private List<MyMusic> musics;
+    private List<Music> musics;
     private LayoutInflater inflater;
 
-    public MusicAdapter(List<MyMusic> musics, Context context) {
+    public MusicAdapter(List<Music> musics, Context context) {
         this.musics = musics;
         this.inflater = LayoutInflater.from(context);
     }
@@ -30,7 +30,7 @@ public class MusicAdapter extends BaseAdapter {
     }
 
     @Override
-    public MyMusic getItem(int position) {
+    public Music getItem(int position) {
         return musics == null ? null : musics.get(position);
     }
 

@@ -17,11 +17,14 @@ import com.example.musicplayer.model.MyMusic;
 
 import java.io.IOException;
 
+
 public class MusicService extends Service {
-    public static final String SERVICE_ACTION = "com.example.musicplayer.utility.Service";
+    public static final String SERVICE_ACTION = "com.example.musicplayer.Service";
+
     private int newMusic;
     private MyMusic myMusic;
     private MediaPlayer player = new MediaPlayer();
+    private PlayState state = PlayState.play;
     private int curPosition;
     private int time;
     private Notification.Builder builder;
@@ -48,6 +51,7 @@ public class MusicService extends Service {
         builder.setTicker("音乐播放器");
         builder.setSmallIcon(R.mipmap.music);
         builder.setContentTitle("音乐播放器");
+        builder.setContentInfo("音乐播放器");
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0,
                 new Intent(this, MainActivity.class), PendingIntent.FLAG_UPDATE_CURRENT);
 
@@ -71,7 +75,6 @@ public class MusicService extends Service {
             }
         });
     }
-
     public void playMusic(final MyMusic myMusic) {
         if (player == null) {
             return;
@@ -120,11 +123,14 @@ public class MusicService extends Service {
             }
         }.start();
     }
+
+
+
+
     public class MyBroadcastReceiver extends BroadcastReceiver {
 
         @Override
         public void onReceive(Context context, Intent intent) {
-            PlayState state = PlayState.play;
             System.out.println("receive");
             newMusic = intent.getIntExtra("newMusic", -1);
             if (newMusic != -1) {

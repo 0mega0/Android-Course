@@ -1,10 +1,8 @@
 <resources>
     <string name="app_name">VocabularyBook</string>
-    <string name="main_title">单词查询</string>
-    <string name="help_title">帮助文档</string>
+    <string name="action_settings">Settings</string>
     <string name="help_text">
         这是一段帮助文档
         \n作者:俞昊洋
     </string>
-    <string name="back">返回</string>
 </resources>

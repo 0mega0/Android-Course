@@ -11,8 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_rowSpan="4"
         android:gravity="center"
-        android:text="@string/help_title"
-        android:textColor="@color/colorActuallyBlack"
+        android:text="帮助页面"
         android:textSize="35sp" />
 
     <TextView
@@ -26,5 +25,14 @@
         android:text="@string/help_text"
         android:textColor="@color/colorPrimary"
         android:textSize="20sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+
+    </LinearLayout>
 
 </GridLayout>

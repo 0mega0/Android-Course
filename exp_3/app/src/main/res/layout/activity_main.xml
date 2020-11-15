@@ -80,7 +80,7 @@
                 android:src="@mipmap/prev" />
 
             <ImageButton
-                android:id="@+id/img_play%pause"
+                android:id="@+id/img_play_pause"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

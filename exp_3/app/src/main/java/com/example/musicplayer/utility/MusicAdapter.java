@@ -8,6 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+
 import com.example.musicplayer.R;
 import com.example.musicplayer.model.MyMusic;
 
@@ -46,26 +47,26 @@ public class MusicAdapter extends BaseAdapter {
             view = inflater.inflate(R.layout.list_item, null);
             viewHolder.name = view.findViewById(R.id.tv_name);
             viewHolder.author = view.findViewById(R.id.tv_author);
-            viewHolder.time = view.findViewById(R.id.tv_time);
+            viewHolder.duration = view.findViewById(R.id.tv_duration);
             view.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) view.getTag();
         }
         viewHolder.name.setText(musics.get(position).getName());
         viewHolder.author.setText(musics.get(position).getAuthor());
-        viewHolder.time.setText(getDuration(musics.get(position).getTime()));
+        viewHolder.duration.setText(getDuration(musics.get(position).getDuration()));
         return view;
     }
 
-    private String getDuration(long time) {
+    private String getDuration(long duration) {
         SimpleDateFormat format = new SimpleDateFormat("mm:ss");
-        return format.format(time);
+        return format.format(duration);
     }
 
     class ViewHolder {
         ImageView img;
         TextView name;
         TextView author;
-        TextView time;
+        TextView duration;
     }
 }

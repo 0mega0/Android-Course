@@ -8,13 +8,13 @@ public class MyMusic implements Serializable {
     private String name;
     private String author;
     private String path;
-    private long time;
+    private long duration;
 
     public MyMusic(String name, String author, String path, long time) {
         this.name = name;
         this.author = author;
         this.path = path;
-        this.time = time;
+        this.duration = time;
     }
 
     public static long getSerialVersionUID() {
@@ -45,11 +45,11 @@ public class MyMusic implements Serializable {
         this.path = path;
     }
 
-    public long getTime() {
-        return time;
+    public long getDuration() {
+        return duration;
     }
 
-    public void setTime(long time) {
-        this.time = time;
+    public void setDuration(long time) {
+        this.duration = time;
     }
 }

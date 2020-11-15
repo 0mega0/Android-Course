@@ -1,6 +1,7 @@
 package com.example.vocabularybook.fragment;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.vocabularybook.R;
 import com.example.vocabularybook.activity.HelpActivity;
+import com.example.vocabularybook.activity.MainActivity;
 import com.example.vocabularybook.activity.SearchActivity;
 import com.example.vocabularybook.module.Item;
 import com.example.vocabularybook.util.MyAdapter;
@@ -52,6 +54,18 @@ public class NoteListFragment extends Fragment {
             noteList.add(note);
         }
         return noteList;
+    }
+    public boolean isLand() {
+        Configuration mConfiguration = this.getResources().getConfiguration(); //获取设置的配置信息
+        int ori = mConfiguration.orientation; //获取屏幕方向
+        if (ori == Configuration.ORIENTATION_LANDSCAPE) {
+            //横屏
+            return true;
+        } else if (ori == Configuration.ORIENTATION_PORTRAIT) {
+            //竖屏
+            return false;
+        }
+        return false;
     }
 
     @Nullable
@@ -88,11 +102,9 @@ public class NoteListFragment extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                int h = getActivity().getWindowManager().getDefaultDisplay().getHeight();
-                int w = getActivity().getWindowManager().getDefaultDisplay().getWidth();
                 ComposeFragment fragment = new ComposeFragment();
                 fragment.SetMethod(itemList.get(position).getId() + "", "update", itemList.get(position).getContent());
-                if (h < w) {
+                if (isLand()) {
                     getActivity().getSupportFragmentManager()
                             .beginTransaction()
                             .replace(R.id.second_content, fragment, null)
@@ -121,11 +133,10 @@ public class NoteListFragment extends Fragment {
         btn_compose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int h = getActivity().getWindowManager().getDefaultDisplay().getHeight();
-                int w = getActivity().getWindowManager().getDefaultDisplay().getWidth();
+
                 ComposeFragment fragment = new ComposeFragment();
                 fragment.SetMethod("none", "insert", "");
-                if (h < w) {
+                if (isLand()) {
                     getActivity().getSupportFragmentManager()
                             .beginTransaction()
                             .replace(R.id.second_content, fragment, null)

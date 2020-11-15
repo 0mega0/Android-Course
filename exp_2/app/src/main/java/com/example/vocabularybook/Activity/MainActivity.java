@@ -1,5 +1,6 @@
 package com.example.vocabularybook.activity;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,9 +15,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        int h = getWindowManager().getDefaultDisplay().getHeight();
-        int w = getWindowManager().getDefaultDisplay().getWidth();
-        if (h < w) {
+        if (isLand()) {
             getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.first_content, new NoteListFragment())
@@ -28,5 +27,18 @@ public class MainActivity extends AppCompatActivity {
                     .replace(R.id.first_content, new NoteListFragment())
                     .commit();
         }
+
+    }
+    public boolean isLand() {
+        Configuration mConfiguration = this.getResources().getConfiguration(); //获取设置的配置信息
+        int ori = mConfiguration.orientation; //获取屏幕方向
+        if (ori == Configuration.ORIENTATION_LANDSCAPE) {
+            //横屏
+            return true;
+        } else if (ori == Configuration.ORIENTATION_PORTRAIT) {
+            //竖屏
+            return false;
+        }
+        return false;
     }
 }
